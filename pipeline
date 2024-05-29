@@ -1,0 +1,16 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Run Job A') {
+      steps {
+        build job: 'JobA', wait: true
+      }
+    }
+    stage('Run Job B') {
+      steps {
+        build job: 'JobB'
+      }
+    }
+  }
+}
