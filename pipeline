@@ -8,7 +8,7 @@ pipeline {
       remote url: 'https://github.com/<username>/<repository-name>.git'
       // Optional: Credentials for private repositories
       credentialsId 'github-credentials' // Replace with your credential ID
-      branch 'main' // Replace with your desired branch
+      branch 'master' // Replace with your desired branch
     }
   }
 
