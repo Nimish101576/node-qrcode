@@ -1,16 +1,33 @@
 pipeline {
   agent any
 
+  // Define the SCM configuration
+  scm {
+    git {
+      // Replace with your Github repository URL
+      remote url: 'https://github.com/<username>/<repository-name>.git'
+      // Optional: Credentials for private repositories
+      credentialsId 'github-credentials' // Replace with your credential ID
+      branch 'main' // Replace with your desired branch
+    }
+  }
+
+  // Stages for your pipeline
   stages {
-    stage('Run Job A') {
+    stage('Checkout Code') {
       steps {
-        build job: 'JobA', wait: true
+        script {
+          // Get some information about the SCM checkout
+          println "SCM Revision: ${GIT_COMMIT}"
+        }
       }
     }
-    stage('Run Job B') {
-      steps {
-        build job: 'JobB'
-      }
-    }
+    // Add more stages here for your build, test, and deploy steps
+    // For example:
+    // stage('Build') {
+    //   steps {
+    //     // Build commands here
+    //   }
+    // }
   }
 }
